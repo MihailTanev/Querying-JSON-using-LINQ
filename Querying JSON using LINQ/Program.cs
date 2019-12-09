@@ -10,18 +10,18 @@
     {
         public static void Main(string[] args)
         {
-            using (var webClient = new WebClient())
-            {
-                var inputJson = webClient.DownloadString("https://gist.githubusercontent.com/christianpanton/10d65ccef9f29de3acd49d97ed423736/raw/b09563bc0c4b318132c7a738e679d4f984ef0048/kings");
+            using var webClient = new WebClient();
 
-                var result1 = GetTotalMonarchs(inputJson);
+            var inputJson = webClient.DownloadString("https://gist.githubusercontent.com/christianpanton/10d65ccef9f29de3acd49d97ed423736/raw/b09563bc0c4b318132c7a738e679d4f984ef0048/kings");
 
-                Console.WriteLine(result1);
+            var result1 = GetTotalMonarchs(inputJson);
 
-                var result2 = GetMostCommonFirstName(inputJson);
+            Console.WriteLine(result1);
 
-                Console.WriteLine(result2);
-            }
+            var result2 = GetMostCommonFirstName(inputJson);
+
+            Console.WriteLine(result2);
+
         }
 
         public static string GetTotalMonarchs(string inputJson)
@@ -51,7 +51,7 @@
             return $"The most common first name is {mostCommonFirstName.Key} and it appears {mostCommonFirstName.Count()} times.";
 
         }
-       
+
     }
 
     public class KingdomCollection
